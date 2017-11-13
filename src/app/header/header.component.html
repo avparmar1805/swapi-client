@@ -1,0 +1,11 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/planet-search" class="navbar-brand">Planet Search</a>
+        </div>
+        <ul *ngIf="loggedInUser !== null" class="nav navbar-nav navbar-right">
+            <li><a href="/planet-search"><span class="glyphicon glyphicon-user"></span> Welcome {{loggedInUser}}</a></li>
+            <li><a href="#" (click)="logout();"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+    </div>
+</nav>

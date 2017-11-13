@@ -1,0 +1,24 @@
+<div class="container">
+    <form class="form-signin" [formGroup]="loginUserForm" (ngSubmit)="Submit(loginUserForm)">
+        <h2 class="form-signin-heading">Login Information</h2>
+        <div class="form-group" [ngClass]="{'has-error':!loginUserForm.controls['username'].valid && loginUserForm.controls['username'].touched} ">
+            <div>
+                <input type="text" id="username" placeholder="Username" class="form-control" [formControl]="loginUserForm.controls['username']"
+                    name="username" />
+                <div *ngIf="loginUserForm.controls['username'].hasError('required') && loginUserForm.controls['username'].touched" class="alert alert-danger">You must include a username.</div>
+            </div>
+        </div>
+        <div class="form-group" [ngClass]="{'has-error':!loginUserForm.controls['password'].valid && loginUserForm.controls['password'].touched} ">
+            <div>
+                <input type="password" id="password" placeholder="Password" class="form-control" [formControl]="loginUserForm.controls['password']"
+                    name="password" />
+                <div *ngIf="loginUserForm.controls['password'].hasError('required') && loginUserForm.controls['password'].touched" class="alert alert-danger">You must include a password.</div>
+            </div>
+        </div>
+         <div class="alert alert-danger" *ngIf="invalidUser">
+            Invalid User Credentials
+        </div> 
+        <button class="btn btn-lg btn-primary btn-block" [disabled]="!loginUserForm.valid" type="submit">LogIn</button>
+
+    </form>
+</div>

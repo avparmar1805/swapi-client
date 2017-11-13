@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <input class="form-control" (keyup)="searchTerm$.next($event.target.value)" placeholder="Search Planet">
+        </div>
+    </div>
+</div>
+<div *ngIf="planetSearchResults">
+
+    <div *ngFor="let planet of planetSearchResults; let i = index;">
+        <div class="container" *ngIf="planet.population==='unknown'">
+            <div class="card card-border w-30">
+                <div class="card-block">
+                    <h3 class="card-title">Name: {{ planet.name }}</h3>
+                    <p class="card-text">Population: {{ planet.population }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="planet.population !=='unknown'">
+            <div class="card card-border" planetHighlight planetIndex={{i}}>
+                <div class="card-block">
+                    <h3 class="card-title">Name: {{ planet.name }}</h3>
+                    <p class="card-text">Population: {{ planet.population }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
